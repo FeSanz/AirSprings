@@ -1,0 +1,11 @@
+D:\Visual Studio\AirSprings\AirSprings\bin\Debug\AirSprings.exe.config
+D:\Visual Studio\AirSprings\AirSprings\bin\Debug\AirSprings.exe
+D:\Visual Studio\AirSprings\AirSprings\bin\Debug\AirSprings.pdb
+D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.csproj.AssemblyReference.cache
+D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.csproj.SuggestedBindingRedirects.cache
+D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.AirSprings.resources
+D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.Properties.Resources.resources
+D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.csproj.GenerateResource.cache
+D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.csproj.CoreCompileInputs.cache
+D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.exe
+D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.pdb
