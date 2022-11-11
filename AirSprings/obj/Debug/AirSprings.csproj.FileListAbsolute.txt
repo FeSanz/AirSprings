@@ -9,3 +9,6 @@ D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.csproj.GenerateResou
 D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.csproj.CoreCompileInputs.cache
 D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.exe
 D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.pdb
+D:\Visual Studio\AirSprings\AirSprings\bin\Debug\Keyence.IV2.Sdk.dll
+D:\Visual Studio\AirSprings\AirSprings\bin\Debug\Keyence.IV2.Sdk.Lib.dll
+D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.csproj.CopyComplete

@@ -10,30 +10,34 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 using Keyence.IV2.Sdk;
 
 namespace AirSprings
 {
     public partial class AirSprings : Form
     {
-        VisionSensorStore store = new VisionSensorStore();
-        IVisionSensor camera;
+        VisionSensorStore store1 = new VisionSensorStore();
+        VisionSensorStore store2 = new VisionSensorStore();
+        IVisionSensor camera1;
+        IVisionSensor camera2;
 
-        Size image_size = new Size(640, 480); //320, 240
+        Size image_size1 = new Size(640, 480); //320, 240
+        Size image_size2 = new Size(640, 480); //320, 240
 
         DataTable list = new DataTable();
 
         public AirSprings()
         {
             InitializeComponent();
-            //InitializeVisionSystem();
+            InitializeVisionSystem();
         }
 
         private void InitializeVisionSystem()
         {
             try
             {
-                byte[] IPAdressLocal = { 192, 168, 0, 23 }; // ip de la PC local
+                byte[] IPAdressLocal = { 192, 168, 10, 49 }; // ip de la PC local
                 IPAddress IPLocal = new IPAddress(IPAdressLocal);
                 VisionSensorStore.StartPoint = IPLocal;
             }
@@ -42,72 +46,111 @@ namespace AirSprings
                 MessageBox.Show("Error. " + ex.Message.ToString());
             }
 
-            byte[] IPAddressCamera = { 192, 168, 0, 23 }; // ip de la camara
-            IPAddress IPCamera = new IPAddress(IPAddressCamera);
-            camera = store.Create(IPCamera, 63000); //ip y puerto
+            byte[] IPAddressCamera1 = { 192, 168, 10, 51 }; // ip de la camara 1
+            IPAddress IPCamera1 = new IPAddress(IPAddressCamera1);
+            camera1 = store1.Create(IPCamera1, 63000); //ip y puerto
 
-            camera.EventEnable = true;
-            camera.ResultUpdated += ResultCameraEvent;
-            camera.ImageAcquired += ImageCameraEvent;
+            byte[] IPAddressCamera2 = { 192, 168, 10, 52 }; // ip de la camara 2
+            IPAddress IPCamera2 = new IPAddress(IPAddressCamera2);
+            camera2 = store2.Create(IPCamera2, 63000); //ip y puerto
+
+            camera1.EventEnable = true;
+            camera1.ResultUpdated += ResultCameraEvent;
+            camera1.ImageAcquired += ImageCameraEvent;
+
+            camera2.EventEnable = true;
+            camera2.ResultUpdated += ResultCameraEvent;
+            camera2.ImageAcquired += ImageCameraEvent;
 
             CameraTimer.Start();
         }
 
         private void ResultCameraEvent(object sender, ToolResultUpdatedEventArgs e)
         {
-            if (e.TotalStatusResult)
+            //if (e.TotalStatusResult)
+            if (e[0].Ok)
             {
-                StatusBarLabel.Text = "Conexión establecida con la cámara";
+                StatusBarLabel.Text = "OK";
                 StatusBarLabel.ForeColor = Color.LimeGreen;
             }
             else
             {
-                MessageBox.Show("No se pudo establecer conexion con la cámara");
+                StatusBarLabel.Text = "NoOK";
+                StatusBarLabel.ForeColor = Color.Red;
             }
         }
 
         private void ImageCameraEvent(object sender, ImageAcquiredEventArgs e)
         {
-            var picture = new Bitmap(image_size.Width,
-                                    image_size.Height,
+            var picture1 = new Bitmap(image_size1.Width,
+                                    image_size1.Height,
                                     PixelFormat.Format24bppRgb);
-            BitmapData bitmapData = picture.LockBits(new Rectangle(Point.Empty, image_size),
-                                                    ImageLockMode.WriteOnly,
-                                                    PixelFormat.Format24bppRgb);
+
+            BitmapData bitmapData1 = picture1.LockBits(new Rectangle(Point.Empty, image_size1),
+                                                ImageLockMode.WriteOnly,
+                                                PixelFormat.Format24bppRgb);
             //Asignar bits de datos a BITMAPDATA
-            Marshal.Copy(e.LiveImage.ByteData, 0, bitmapData.Scan0, e.LiveImage.ByteData.Length);
-            picture.UnlockBits(bitmapData);
+            Marshal.Copy(e.LiveImage.ByteData, 0, bitmapData1.Scan0, e.LiveImage.ByteData.Length);
+            picture1.UnlockBits(bitmapData1);
 
             //Colocar marcadores en la captura
-            using (Graphics target = Graphics.FromImage(picture))
+            using (Graphics target1 = Graphics.FromImage(picture1))
             {
-                target.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                target1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                 for (byte i = 0; i < 16; i++)
                 {
-                    camera.DrawWindow(target, Color.Green, Color.Red, i);
+                    camera1.DrawWindow(target1, Color.Green, Color.Red, i);
+                }
+            }
+
+            /****************************************************************************/
+            var picture2 = new Bitmap(image_size2.Width,
+                        image_size2.Height,
+                        PixelFormat.Format24bppRgb);
+
+            BitmapData bitmapData2 = picture2.LockBits(new Rectangle(Point.Empty, image_size2),
+                                                   ImageLockMode.WriteOnly,
+                                                   PixelFormat.Format24bppRgb);
+            //Asignar bits de datos a BITMAPDATA
+            Marshal.Copy(e.LiveImage.ByteData, 0, bitmapData2.Scan0, e.LiveImage.ByteData.Length);
+            picture2.UnlockBits(bitmapData2);
+
+            //Colocar marcadores en la captura
+            using (Graphics target2 = Graphics.FromImage(picture2))
+            {
+                target2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                for (byte i = 0; i < 16; i++)
+                {
+                    camera1.DrawWindow(target2, Color.Green, Color.Red, i);
                 }
             }
 
             //Validar se el contenedor de la imagen esta vacio y colocar frame
-            if (CameraPictureBox.Image != null)
+            if (Camera1PictureBox.Image != null && Camera2PictureBox.Image != null)
             {
-                CameraPictureBox.Image.Dispose();
+                Camera1PictureBox.Image.Dispose();
+                Camera2PictureBox.Image.Dispose();
             }
 
-            CameraPictureBox.Image = picture;
+            Camera1PictureBox.Image = picture1;
+            Camera2PictureBox.Image = picture2;
         }
 
         private void AirSprings_Load(object sender, EventArgs e)
         {
-            FormBorderStyle = FormBorderStyle.None;
-            WindowState = FormWindowState.Maximized;
-            TopMost = true;
+            //FormBorderStyle = FormBorderStyle.None;
+            //WindowState = FormWindowState.Maximized;
+            //TopMost = true;
 
             list.Columns.Add("Spring", typeof(string));
             SpringsDataGrid.DataSource = list;
             SpringsDataGrid.ColumnHeadersVisible = false;
             SpringsDataGrid.RowHeadersVisible = false;
             SpringsDataGrid.CellBorderStyle = DataGridViewCellBorderStyle.None;
+
+            /*Thread trd = new Thread(new ThreadStart(this.ThreadTask));
+            trd.IsBackground = true;
+            trd.Start();*/
         }
 
         private void LeaveButton_Click(object sender, EventArgs e)
@@ -116,7 +159,7 @@ namespace AirSprings
             WindowState = FormWindowState.Normal;
             TopMost = false;
 
-            System.Windows.Forms.Application.Exit();
+            Application.Exit();
         }
 
        
@@ -134,14 +177,15 @@ namespace AirSprings
 
         private void CameraTimer_Tick(object sender, EventArgs e)
         {
-            camera.TickTack();
-            StatusBarLabel.Text = camera.ActiveProgram.ProgramName;
+            camera1.TickTack();
+            camera2.TickTack();
+            //StatusBarLabel.Text = camera.ActiveProgram.ProgramName;
 
             //Detectar errores de la camara
-            if(camera.Errors.Length > 0)
+            if(camera1.Errors.Length > 0 || camera2.Errors.Length > 0)
             {
-                MessageBox.Show(camera.Errors[0].Description);
-                camera.ClearError(camera.Errors[0]); //limpiar errores
+                MessageBox.Show(camera1.Errors[0].Description);
+                camera1.ClearError(camera1.Errors[0]); //limpiar errores
             }
         }
 
@@ -152,7 +196,27 @@ namespace AirSprings
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            camera.Trigger();
+            camera1.Trigger();
+            camera2.Trigger();
+        }
+
+        private void ThreadTask()
+        {
+            int stp;
+            int newval;
+            Random rnd = new Random();
+
+            while (true)
+            {
+               /* stp = ProgressBarThread.Step * rnd.Next(-1, 2);
+                newval = ProgressBarThread.Value + stp;
+                if (newval > ProgressBarThread.Maximum)
+                    newval = ProgressBarThread.Maximum;
+                else if (newval < ProgressBarThread.Minimum)
+                    newval = ProgressBarThread.Minimum;
+                ProgressBarThread.Value = newval;
+                Thread.Sleep(100);*/
+            }
         }
     }
 }
