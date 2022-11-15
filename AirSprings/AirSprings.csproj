@@ -36,6 +36,9 @@
     <Reference Include="Keyence.IV2.Sdk">
       <HintPath>.\Keyence.IV2.Sdk.dll</HintPath>
     </Reference>
+    <Reference Include="S7.Net, Version=0.15.0.0, Culture=neutral, PublicKeyToken=d5812d469e84c693, processorArchitecture=MSIL">
+      <HintPath>..\packages\S7netplus.0.15.0\lib\net452\S7.Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -69,6 +72,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

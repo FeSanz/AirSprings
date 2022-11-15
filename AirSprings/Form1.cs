@@ -12,20 +12,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using Keyence.IV2.Sdk;
+using S7.Net;
+using Timer = System.Windows.Forms.Timer;
 
 namespace AirSprings
 {
     public partial class AirSprings : Form
     {
-        VisionSensorStore store1 = new VisionSensorStore();
+        /*VisionSensorStore store1 = new VisionSensorStore();
         VisionSensorStore store2 = new VisionSensorStore();
         IVisionSensor camera1;
         IVisionSensor camera2;
 
         Size image_size1 = new Size(640, 480); //320, 240
-        Size image_size2 = new Size(640, 480); //320, 240
+        Size image_size2 = new Size(640, 480); //320, 240*/
 
         DataTable list = new DataTable();
+
+        int trigger = 0;
+
+        private Plc plc = null;
+        Timer timerRead = new Timer();
 
         public AirSprings()
         {
@@ -35,7 +42,7 @@ namespace AirSprings
 
         private void InitializeVisionSystem()
         {
-            try
+            /*try
             {
                 byte[] IPAdressLocal = { 192, 168, 10, 49 }; // ip de la PC local
                 IPAddress IPLocal = new IPAddress(IPAdressLocal);
@@ -55,34 +62,50 @@ namespace AirSprings
             camera2 = store2.Create(IPCamera2, 63000); //ip y puerto
 
             camera1.EventEnable = true;
-            camera1.ResultUpdated += ResultCameraEvent;
-            camera1.ImageAcquired += ImageCameraEvent;
+            camera1.ResultUpdated += ResultCamera1Event;
+            //camera1.ImageAcquired += ImageCamera1Event;
 
             camera2.EventEnable = true;
-            camera2.ResultUpdated += ResultCameraEvent;
-            camera2.ImageAcquired += ImageCameraEvent;
+            camera2.ResultUpdated += ResultCamera2Event;
+            //camera2.ImageAcquired += ImageCamera2Event;
 
-            CameraTimer.Start();
-        }
+            CameraTimer.Start();*/
 
-        private void ResultCameraEvent(object sender, ToolResultUpdatedEventArgs e)
-        {
-            //if (e.TotalStatusResult)
-            if (e[0].Ok)
+            plc = new Plc(CpuType.S71200, "192.168.10.60", 0, 1);
+            plc.Open();
+
+            if (plc.IsConnected)
             {
-                StatusBarLabel.Text = "OK";
-                StatusBarLabel.ForeColor = Color.LimeGreen;
+                MessageBox.Show("Conectado a PLC");
             }
             else
             {
-                StatusBarLabel.Text = "NoOK";
-                StatusBarLabel.ForeColor = Color.Red;
+                MessageBox.Show("No se establecio conexión al PLC");
             }
+
+            timerRead.Interval = 1000;
+            timerRead.Tick += new EventHandler(ReadPLC);
+            timerRead.Start();
         }
 
-        private void ImageCameraEvent(object sender, ImageAcquiredEventArgs e)
+        private void ResultCamera1Event(object sender, ToolResultUpdatedEventArgs e)
         {
-            var picture1 = new Bitmap(image_size1.Width,
+            /*//if (e[0].Ok)
+            if (e.TotalStatusResult)
+            {
+                TextCamera1.Text = "OK";
+                TextCamera1.ForeColor = Color.LimeGreen;
+            }
+            else
+            {
+                TextCamera1.Text = "NoOK";
+                TextCamera1.ForeColor = Color.Red;
+            }*/
+        }
+
+        private void ImageCamera1Event(object sender, ImageAcquiredEventArgs e)
+        {
+            /*var picture1 = new Bitmap(image_size1.Width,
                                     image_size1.Height,
                                     PixelFormat.Format24bppRgb);
 
@@ -103,8 +126,33 @@ namespace AirSprings
                 }
             }
 
-            /****************************************************************************/
-            var picture2 = new Bitmap(image_size2.Width,
+            //Validar se el contenedor de la imagen esta vacio y colocar frame
+            if (Camera1PictureBox.Image != null && Camera2PictureBox.Image != null)
+            {
+                Camera1PictureBox.Image.Dispose();
+            }
+
+            Camera1PictureBox.Image = picture1;*/
+        }
+
+        private void ResultCamera2Event(object sender, ToolResultUpdatedEventArgs e)
+        {
+            /*//if (e[0].Ok)
+            if (e.TotalStatusResult)
+            {
+                TextCamera2.Text = "OK";
+                TextCamera2.ForeColor = Color.LimeGreen;
+            }             
+            else          
+            {             
+                TextCamera2.Text = "NoOK";
+                TextCamera2.ForeColor = Color.Red;
+            }*/
+        }
+
+        private void ImageCamera2Event(object sender, ImageAcquiredEventArgs e)
+        {
+            /*var picture2 = new Bitmap(image_size2.Width,
                         image_size2.Height,
                         PixelFormat.Format24bppRgb);
 
@@ -126,14 +174,12 @@ namespace AirSprings
             }
 
             //Validar se el contenedor de la imagen esta vacio y colocar frame
-            if (Camera1PictureBox.Image != null && Camera2PictureBox.Image != null)
+            if (Camera2PictureBox.Image != null)
             {
-                Camera1PictureBox.Image.Dispose();
                 Camera2PictureBox.Image.Dispose();
             }
 
-            Camera1PictureBox.Image = picture1;
-            Camera2PictureBox.Image = picture2;
+            Camera2PictureBox.Image = picture2;*/
         }
 
         private void AirSprings_Load(object sender, EventArgs e)
@@ -147,10 +193,8 @@ namespace AirSprings
             SpringsDataGrid.ColumnHeadersVisible = false;
             SpringsDataGrid.RowHeadersVisible = false;
             SpringsDataGrid.CellBorderStyle = DataGridViewCellBorderStyle.None;
-
-            /*Thread trd = new Thread(new ThreadStart(this.ThreadTask));
-            trd.IsBackground = true;
-            trd.Start();*/
+            DebugTextBox.Visible= true;
+            DebugTextBox.Text = "++++";
         }
 
         private void LeaveButton_Click(object sender, EventArgs e)
@@ -161,7 +205,6 @@ namespace AirSprings
 
             Application.Exit();
         }
-
        
         private void PrintButton_Click(object sender, EventArgs e)
         {
@@ -177,16 +220,34 @@ namespace AirSprings
 
         private void CameraTimer_Tick(object sender, EventArgs e)
         {
-            camera1.TickTack();
+            /*camera1.TickTack();
             camera2.TickTack();
             //StatusBarLabel.Text = camera.ActiveProgram.ProgramName;
 
             //Detectar errores de la camara
-            if(camera1.Errors.Length > 0 || camera2.Errors.Length > 0)
+            if(camera1.Errors.Length > 0)
             {
-                MessageBox.Show(camera1.Errors[0].Description);
+                TitleCamara1.Text = "Error. " + camera1.Errors[0].Description;
+                TitleCamara1.ForeColor = Color.Red;
                 camera1.ClearError(camera1.Errors[0]); //limpiar errores
             }
+            else
+            {
+                TitleCamara1.Text = "CAMARA I (" + camera1.ActiveProgram.ProgramName + ")";
+                TitleCamara1.ForeColor = Color.Black;
+            }
+
+            if (camera2.Errors.Length > 0)
+            {
+                TitleCamara2.Text = "Error. " + camera2.Errors[0].Description;
+                TitleCamara2.ForeColor = Color.Red;
+                camera1.ClearError(camera1.Errors[0]); //limpiar errores
+            }
+            else
+            {
+                TitleCamara2.Text = "CAMARA II (" + camera2.ActiveProgram.ProgramName + ")";
+                TitleCamara2.ForeColor = Color.Black;
+            }*/
         }
 
         private void CleanButton_Click(object sender, EventArgs e)
@@ -196,26 +257,39 @@ namespace AirSprings
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            camera1.Trigger();
-            camera2.Trigger();
+            /*camera1.Trigger();
+            camera2.Trigger();*/
         }
 
-        private void ThreadTask()
+        bool pieza = false;
+        private void ReadPLC(object sender, EventArgs e)
         {
-            int stp;
-            int newval;
-            Random rnd = new Random();
+            /*byte[] buffer = plc.ReadBytes(DataType.Input, 0, 0, 1);
 
-            while (true)
+            if(buffer[0].SelectBit(0).ToString() == "True" ||
+                buffer[0].SelectBit(1).ToString() == "True" ||
+                buffer[0].SelectBit(2).ToString() == "True")
             {
-               /* stp = ProgressBarThread.Step * rnd.Next(-1, 2);
-                newval = ProgressBarThread.Value + stp;
-                if (newval > ProgressBarThread.Maximum)
-                    newval = ProgressBarThread.Maximum;
-                else if (newval < ProgressBarThread.Minimum)
-                    newval = ProgressBarThread.Minimum;
-                ProgressBarThread.Value = newval;
-                Thread.Sleep(100);*/
+                camera1.Trigger();
+                camera2.Trigger();
+                TextResult0.Text = buffer[0].SelectBit(0).ToString();
+                TextResult1.Text = buffer[0].SelectBit(1).ToString();
+                TextResult2.Text = buffer[0].SelectBit(2).ToString();
+            }*/
+            byte[] marcas = plc.ReadBytes(DataType.Memory, 0, 100, 1);
+            DebugTextBox.Text = marcas[0].ToString();
+            if (marcas[0] == 7)
+            {
+                if (!pieza)
+                {
+                    pieza = true;
+                    MessageBox.Show("Pieza Ok");
+                }
+            }
+            else
+            {
+                pieza = false;
+                DebugTextBox.Text = marcas[0].ToString();
             }
         }
     }

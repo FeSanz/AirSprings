@@ -12,3 +12,5 @@ D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.pdb
 D:\Visual Studio\AirSprings\AirSprings\bin\Debug\Keyence.IV2.Sdk.dll
 D:\Visual Studio\AirSprings\AirSprings\bin\Debug\Keyence.IV2.Sdk.Lib.dll
 D:\Visual Studio\AirSprings\AirSprings\obj\Debug\AirSprings.csproj.CopyComplete
+D:\Visual Studio\AirSprings\AirSprings\bin\Debug\S7.Net.dll
+D:\Visual Studio\AirSprings\AirSprings\bin\Debug\S7.Net.xml

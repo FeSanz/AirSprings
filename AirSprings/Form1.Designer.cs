@@ -33,6 +33,8 @@ namespace AirSprings
             this.components = new System.ComponentModel.Container();
             this.SpringsTabControl = new System.Windows.Forms.TabControl();
             this.Packing = new System.Windows.Forms.TabPage();
+            this.SpringsGroupBox = new System.Windows.Forms.GroupBox();
+            this.SpringsDataGrid = new System.Windows.Forms.DataGridView();
             this.TopLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.OrdersLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.CartonGroupBox = new System.Windows.Forms.GroupBox();
@@ -48,29 +50,18 @@ namespace AirSprings
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.PackLabel = new System.Windows.Forms.Label();
             this.CartonLabel = new System.Windows.Forms.Label();
-            this.TextD5 = new System.Windows.Forms.Label();
             this.TextD6 = new System.Windows.Forms.Label();
             this.AssamblyLabel = new System.Windows.Forms.Label();
             this.LabelLabel = new System.Windows.Forms.Label();
-            this.OperatorGroupBox = new System.Windows.Forms.GroupBox();
-            this.OperatorTextBox = new System.Windows.Forms.TextBox();
             this.LoteGropuBox = new System.Windows.Forms.GroupBox();
             this.ComponentsLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.Lote02Label = new System.Windows.Forms.Label();
             this.Lote02TextBox = new System.Windows.Forms.TextBox();
             this.Lote01TextBox = new System.Windows.Forms.TextBox();
             this.Lote01Label = new System.Windows.Forms.Label();
+            this.OperatorGroupBox = new System.Windows.Forms.GroupBox();
+            this.OperatorTextBox = new System.Windows.Forms.TextBox();
             this.DebugTextBox = new System.Windows.Forms.TextBox();
-            this.ListLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.SpringsGroupBox = new System.Windows.Forms.GroupBox();
-            this.SpringsDataGrid = new System.Windows.Forms.DataGridView();
-            this.CameraLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.TextCamera2 = new System.Windows.Forms.Label();
-            this.TextCamera1 = new System.Windows.Forms.Label();
-            this.TitleCamara2 = new System.Windows.Forms.Label();
-            this.TitleCamara1 = new System.Windows.Forms.Label();
-            this.Camera1PictureBox = new System.Windows.Forms.PictureBox();
-            this.Camera2PictureBox = new System.Windows.Forms.PictureBox();
             this.BottomLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.LeaveButton = new System.Windows.Forms.Button();
             this.CleanButton = new System.Windows.Forms.Button();
@@ -82,25 +73,26 @@ namespace AirSprings
             this.CameraTimer = new System.Windows.Forms.Timer(this.components);
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.StatusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.TextD5 = new System.Windows.Forms.Label();
+            this.IndicadorsGroupBox = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SpringsTabControl.SuspendLayout();
             this.Packing.SuspendLayout();
+            this.SpringsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpringsDataGrid)).BeginInit();
             this.TopLayoutPanel.SuspendLayout();
             this.OrdersLayoutPanel.SuspendLayout();
             this.CartonGroupBox.SuspendLayout();
             this.OrderGroupBox.SuspendLayout();
             this.LayoutPanelData.SuspendLayout();
-            this.OperatorGroupBox.SuspendLayout();
             this.LoteGropuBox.SuspendLayout();
             this.ComponentsLayoutPanel.SuspendLayout();
-            this.ListLayoutPanel.SuspendLayout();
-            this.SpringsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpringsDataGrid)).BeginInit();
-            this.CameraLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Camera1PictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Camera2PictureBox)).BeginInit();
+            this.OperatorGroupBox.SuspendLayout();
             this.BottomLayoutPanel.SuspendLayout();
             this.DeclineGrupBox.SuspendLayout();
             this.StatusBar.SuspendLayout();
+            this.IndicadorsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // SpringsTabControl
@@ -117,11 +109,12 @@ namespace AirSprings
             // 
             // Packing
             // 
+            this.Packing.Controls.Add(this.IndicadorsGroupBox);
+            this.Packing.Controls.Add(this.SpringsGroupBox);
             this.Packing.Controls.Add(this.TopLayoutPanel);
-            this.Packing.Controls.Add(this.OperatorGroupBox);
             this.Packing.Controls.Add(this.LoteGropuBox);
+            this.Packing.Controls.Add(this.OperatorGroupBox);
             this.Packing.Controls.Add(this.DebugTextBox);
-            this.Packing.Controls.Add(this.ListLayoutPanel);
             this.Packing.Controls.Add(this.BottomLayoutPanel);
             this.Packing.Location = new System.Drawing.Point(4, 22);
             this.Packing.Name = "Packing";
@@ -130,6 +123,33 @@ namespace AirSprings
             this.Packing.TabIndex = 0;
             this.Packing.Text = "Empaque Amortiguadores";
             this.Packing.UseVisualStyleBackColor = true;
+            // 
+            // SpringsGroupBox
+            // 
+            this.SpringsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SpringsGroupBox.Controls.Add(this.SpringsDataGrid);
+            this.SpringsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpringsGroupBox.Location = new System.Drawing.Point(3, 201);
+            this.SpringsGroupBox.Name = "SpringsGroupBox";
+            this.SpringsGroupBox.Padding = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.SpringsGroupBox.Size = new System.Drawing.Size(688, 331);
+            this.SpringsGroupBox.TabIndex = 4;
+            this.SpringsGroupBox.TabStop = false;
+            this.SpringsGroupBox.Text = "Spring List";
+            // 
+            // SpringsDataGrid
+            // 
+            this.SpringsDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SpringsDataGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SpringsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SpringsDataGrid.Location = new System.Drawing.Point(6, 20);
+            this.SpringsDataGrid.Name = "SpringsDataGrid";
+            this.SpringsDataGrid.Size = new System.Drawing.Size(674, 305);
+            this.SpringsDataGrid.TabIndex = 0;
             // 
             // TopLayoutPanel
             // 
@@ -144,7 +164,7 @@ namespace AirSprings
             this.TopLayoutPanel.Name = "TopLayoutPanel";
             this.TopLayoutPanel.RowCount = 1;
             this.TopLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TopLayoutPanel.Size = new System.Drawing.Size(691, 189);
+            this.TopLayoutPanel.Size = new System.Drawing.Size(994, 189);
             this.TopLayoutPanel.TabIndex = 4;
             // 
             // OrdersLayoutPanel
@@ -161,7 +181,7 @@ namespace AirSprings
             this.OrdersLayoutPanel.RowCount = 2;
             this.OrdersLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.OrdersLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.OrdersLayoutPanel.Size = new System.Drawing.Size(166, 183);
+            this.OrdersLayoutPanel.Size = new System.Drawing.Size(242, 183);
             this.OrdersLayoutPanel.TabIndex = 2;
             // 
             // CartonGroupBox
@@ -173,7 +193,7 @@ namespace AirSprings
             this.CartonGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CartonGroupBox.Location = new System.Drawing.Point(3, 94);
             this.CartonGroupBox.Name = "CartonGroupBox";
-            this.CartonGroupBox.Size = new System.Drawing.Size(160, 86);
+            this.CartonGroupBox.Size = new System.Drawing.Size(236, 86);
             this.CartonGroupBox.TabIndex = 1;
             this.CartonGroupBox.TabStop = false;
             this.CartonGroupBox.Text = "Carton  Number";
@@ -184,7 +204,7 @@ namespace AirSprings
             this.CartonTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CartonTextBox.Location = new System.Drawing.Point(3, 22);
             this.CartonTextBox.Name = "CartonTextBox";
-            this.CartonTextBox.Size = new System.Drawing.Size(154, 41);
+            this.CartonTextBox.Size = new System.Drawing.Size(230, 41);
             this.CartonTextBox.TabIndex = 0;
             this.CartonTextBox.Text = "00000000";
             // 
@@ -197,7 +217,7 @@ namespace AirSprings
             this.OrderGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OrderGroupBox.Location = new System.Drawing.Point(3, 3);
             this.OrderGroupBox.Name = "OrderGroupBox";
-            this.OrderGroupBox.Size = new System.Drawing.Size(160, 85);
+            this.OrderGroupBox.Size = new System.Drawing.Size(236, 85);
             this.OrderGroupBox.TabIndex = 0;
             this.OrderGroupBox.TabStop = false;
             this.OrderGroupBox.Text = "Order Number";
@@ -208,15 +228,17 @@ namespace AirSprings
             this.OrderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OrderTextBox.Location = new System.Drawing.Point(3, 22);
             this.OrderTextBox.Name = "OrderTextBox";
-            this.OrderTextBox.Size = new System.Drawing.Size(154, 41);
+            this.OrderTextBox.Size = new System.Drawing.Size(230, 41);
             this.OrderTextBox.TabIndex = 0;
             this.OrderTextBox.Text = "00000000";
             // 
             // LayoutPanelData
             // 
-            this.LayoutPanelData.ColumnCount = 2;
-            this.LayoutPanelData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.56174F));
-            this.LayoutPanelData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.43826F));
+            this.LayoutPanelData.ColumnCount = 4;
+            this.LayoutPanelData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.51899F));
+            this.LayoutPanelData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.48101F));
+            this.LayoutPanelData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.LayoutPanelData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
             this.LayoutPanelData.Controls.Add(this.TextD4, 0, 3);
             this.LayoutPanelData.Controls.Add(this.TextD1, 0, 0);
             this.LayoutPanelData.Controls.Add(this.TextD2, 0, 1);
@@ -225,21 +247,19 @@ namespace AirSprings
             this.LayoutPanelData.Controls.Add(this.DescriptionLabel, 1, 1);
             this.LayoutPanelData.Controls.Add(this.PackLabel, 1, 2);
             this.LayoutPanelData.Controls.Add(this.CartonLabel, 1, 3);
-            this.LayoutPanelData.Controls.Add(this.TextD5, 0, 4);
-            this.LayoutPanelData.Controls.Add(this.TextD6, 0, 5);
-            this.LayoutPanelData.Controls.Add(this.AssamblyLabel, 1, 4);
-            this.LayoutPanelData.Controls.Add(this.LabelLabel, 1, 5);
+            this.LayoutPanelData.Controls.Add(this.TextD5, 2, 0);
+            this.LayoutPanelData.Controls.Add(this.AssamblyLabel, 3, 0);
+            this.LayoutPanelData.Controls.Add(this.TextD6, 2, 1);
+            this.LayoutPanelData.Controls.Add(this.LabelLabel, 3, 1);
             this.LayoutPanelData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LayoutPanelData.Location = new System.Drawing.Point(175, 3);
+            this.LayoutPanelData.Location = new System.Drawing.Point(251, 3);
             this.LayoutPanelData.Name = "LayoutPanelData";
-            this.LayoutPanelData.RowCount = 6;
+            this.LayoutPanelData.RowCount = 4;
             this.LayoutPanelData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.LayoutPanelData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.LayoutPanelData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.LayoutPanelData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.LayoutPanelData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.LayoutPanelData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.LayoutPanelData.Size = new System.Drawing.Size(513, 183);
+            this.LayoutPanelData.Size = new System.Drawing.Size(740, 183);
             this.LayoutPanelData.TabIndex = 3;
             // 
             // TextD4
@@ -248,9 +268,9 @@ namespace AirSprings
             this.TextD4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextD4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.TextD4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.TextD4.Location = new System.Drawing.Point(3, 90);
+            this.TextD4.Location = new System.Drawing.Point(3, 135);
             this.TextD4.Name = "TextD4";
-            this.TextD4.Size = new System.Drawing.Size(114, 30);
+            this.TextD4.Size = new System.Drawing.Size(96, 48);
             this.TextD4.TabIndex = 5;
             this.TextD4.Text = "Carton Quantity";
             this.TextD4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -263,7 +283,7 @@ namespace AirSprings
             this.TextD1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.TextD1.Location = new System.Drawing.Point(3, 0);
             this.TextD1.Name = "TextD1";
-            this.TextD1.Size = new System.Drawing.Size(114, 30);
+            this.TextD1.Size = new System.Drawing.Size(96, 45);
             this.TextD1.TabIndex = 0;
             this.TextD1.Text = "SQL Part Number";
             this.TextD1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -274,9 +294,9 @@ namespace AirSprings
             this.TextD2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextD2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.TextD2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.TextD2.Location = new System.Drawing.Point(3, 30);
+            this.TextD2.Location = new System.Drawing.Point(3, 45);
             this.TextD2.Name = "TextD2";
-            this.TextD2.Size = new System.Drawing.Size(114, 30);
+            this.TextD2.Size = new System.Drawing.Size(96, 45);
             this.TextD2.TabIndex = 1;
             this.TextD2.Text = "Description";
             this.TextD2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -287,9 +307,9 @@ namespace AirSprings
             this.TextD3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextD3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.TextD3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.TextD3.Location = new System.Drawing.Point(3, 60);
+            this.TextD3.Location = new System.Drawing.Point(3, 90);
             this.TextD3.Name = "TextD3";
-            this.TextD3.Size = new System.Drawing.Size(114, 30);
+            this.TextD3.Size = new System.Drawing.Size(96, 45);
             this.TextD3.TabIndex = 2;
             this.TextD3.Text = "Pack Specification";
             this.TextD3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -300,9 +320,9 @@ namespace AirSprings
             this.SQLPartLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SQLPartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.SQLPartLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.SQLPartLabel.Location = new System.Drawing.Point(123, 0);
+            this.SQLPartLabel.Location = new System.Drawing.Point(105, 0);
             this.SQLPartLabel.Name = "SQLPartLabel";
-            this.SQLPartLabel.Size = new System.Drawing.Size(387, 30);
+            this.SQLPartLabel.Size = new System.Drawing.Size(366, 45);
             this.SQLPartLabel.TabIndex = 6;
             this.SQLPartLabel.Text = "0000-0000";
             this.SQLPartLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -313,9 +333,9 @@ namespace AirSprings
             this.DescriptionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.DescriptionLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.DescriptionLabel.Location = new System.Drawing.Point(123, 30);
+            this.DescriptionLabel.Location = new System.Drawing.Point(105, 45);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(387, 30);
+            this.DescriptionLabel.Size = new System.Drawing.Size(366, 45);
             this.DescriptionLabel.TabIndex = 7;
             this.DescriptionLabel.Text = "XXX0000000X Xsssss X000 Xssss Xss. Xsss";
             this.DescriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -326,9 +346,9 @@ namespace AirSprings
             this.PackLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PackLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.PackLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.PackLabel.Location = new System.Drawing.Point(123, 60);
+            this.PackLabel.Location = new System.Drawing.Point(105, 90);
             this.PackLabel.Name = "PackLabel";
-            this.PackLabel.Size = new System.Drawing.Size(387, 30);
+            this.PackLabel.Size = new System.Drawing.Size(366, 45);
             this.PackLabel.TabIndex = 8;
             this.PackLabel.Text = "XXXX0000";
             this.PackLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -339,25 +359,12 @@ namespace AirSprings
             this.CartonLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CartonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.CartonLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CartonLabel.Location = new System.Drawing.Point(123, 90);
+            this.CartonLabel.Location = new System.Drawing.Point(105, 135);
             this.CartonLabel.Name = "CartonLabel";
-            this.CartonLabel.Size = new System.Drawing.Size(387, 30);
+            this.CartonLabel.Size = new System.Drawing.Size(366, 48);
             this.CartonLabel.TabIndex = 10;
             this.CartonLabel.Text = "00 de 00";
             this.CartonLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // TextD5
-            // 
-            this.TextD5.AutoSize = true;
-            this.TextD5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextD5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
-            this.TextD5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.TextD5.Location = new System.Drawing.Point(3, 120);
-            this.TextD5.Name = "TextD5";
-            this.TextD5.Size = new System.Drawing.Size(114, 30);
-            this.TextD5.TabIndex = 3;
-            this.TextD5.Text = "Assembly Specification";
-            this.TextD5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TextD6
             // 
@@ -365,9 +372,9 @@ namespace AirSprings
             this.TextD6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextD6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.TextD6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.TextD6.Location = new System.Drawing.Point(3, 150);
+            this.TextD6.Location = new System.Drawing.Point(477, 45);
             this.TextD6.Name = "TextD6";
-            this.TextD6.Size = new System.Drawing.Size(114, 33);
+            this.TextD6.Size = new System.Drawing.Size(107, 45);
             this.TextD6.TabIndex = 4;
             this.TextD6.Text = "2nd Label";
             this.TextD6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -378,9 +385,9 @@ namespace AirSprings
             this.AssamblyLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AssamblyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.AssamblyLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.AssamblyLabel.Location = new System.Drawing.Point(123, 120);
+            this.AssamblyLabel.Location = new System.Drawing.Point(590, 0);
             this.AssamblyLabel.Name = "AssamblyLabel";
-            this.AssamblyLabel.Size = new System.Drawing.Size(387, 30);
+            this.AssamblyLabel.Size = new System.Drawing.Size(147, 45);
             this.AssamblyLabel.TabIndex = 9;
             this.AssamblyLabel.Text = "XXXX0000";
             this.AssamblyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -391,47 +398,21 @@ namespace AirSprings
             this.LabelLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.LabelLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LabelLabel.Location = new System.Drawing.Point(123, 150);
+            this.LabelLabel.Location = new System.Drawing.Point(590, 45);
             this.LabelLabel.Name = "LabelLabel";
-            this.LabelLabel.Size = new System.Drawing.Size(387, 33);
+            this.LabelLabel.Size = new System.Drawing.Size(147, 45);
             this.LabelLabel.TabIndex = 11;
             this.LabelLabel.Text = "True   XX0";
             this.LabelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // OperatorGroupBox
-            // 
-            this.OperatorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.OperatorGroupBox.Controls.Add(this.OperatorTextBox);
-            this.OperatorGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OperatorGroupBox.Location = new System.Drawing.Point(697, 152);
-            this.OperatorGroupBox.Name = "OperatorGroupBox";
-            this.OperatorGroupBox.Size = new System.Drawing.Size(306, 43);
-            this.OperatorGroupBox.TabIndex = 0;
-            this.OperatorGroupBox.TabStop = false;
-            this.OperatorGroupBox.Text = "Operador";
-            // 
-            // OperatorTextBox
-            // 
-            this.OperatorTextBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.OperatorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OperatorTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OperatorTextBox.Location = new System.Drawing.Point(3, 17);
-            this.OperatorTextBox.Margin = new System.Windows.Forms.Padding(10);
-            this.OperatorTextBox.Name = "OperatorTextBox";
-            this.OperatorTextBox.ReadOnly = true;
-            this.OperatorTextBox.Size = new System.Drawing.Size(300, 21);
-            this.OperatorTextBox.TabIndex = 0;
-            this.OperatorTextBox.Text = "FELIPE ANTONIO SANCHEZ";
-            this.OperatorTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // LoteGropuBox
             // 
             this.LoteGropuBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LoteGropuBox.Controls.Add(this.ComponentsLayoutPanel);
             this.LoteGropuBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoteGropuBox.Location = new System.Drawing.Point(697, 6);
+            this.LoteGropuBox.Location = new System.Drawing.Point(700, 206);
             this.LoteGropuBox.Name = "LoteGropuBox";
-            this.LoteGropuBox.Size = new System.Drawing.Size(303, 146);
+            this.LoteGropuBox.Size = new System.Drawing.Size(303, 148);
             this.LoteGropuBox.TabIndex = 1;
             this.LoteGropuBox.TabStop = false;
             this.LoteGropuBox.Text = "No. Lote de Componentes";
@@ -452,7 +433,7 @@ namespace AirSprings
             this.ComponentsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.49573F));
             this.ComponentsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.36752F));
             this.ComponentsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.18803F));
-            this.ComponentsLayoutPanel.Size = new System.Drawing.Size(297, 127);
+            this.ComponentsLayoutPanel.Size = new System.Drawing.Size(297, 129);
             this.ComponentsLayoutPanel.TabIndex = 0;
             // 
             // Lote02Label
@@ -460,7 +441,7 @@ namespace AirSprings
             this.Lote02Label.AutoSize = true;
             this.Lote02Label.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Lote02Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lote02Label.Location = new System.Drawing.Point(3, 67);
+            this.Lote02Label.Location = new System.Drawing.Point(3, 69);
             this.Lote02Label.Name = "Lote02Label";
             this.Lote02Label.Size = new System.Drawing.Size(291, 15);
             this.Lote02Label.TabIndex = 3;
@@ -471,7 +452,7 @@ namespace AirSprings
             this.Lote02TextBox.BackColor = System.Drawing.Color.Lime;
             this.Lote02TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Lote02TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lote02TextBox.Location = new System.Drawing.Point(3, 85);
+            this.Lote02TextBox.Location = new System.Drawing.Point(3, 87);
             this.Lote02TextBox.Name = "Lote02TextBox";
             this.Lote02TextBox.Size = new System.Drawing.Size(291, 26);
             this.Lote02TextBox.TabIndex = 1;
@@ -482,7 +463,7 @@ namespace AirSprings
             this.Lote01TextBox.BackColor = System.Drawing.Color.Lime;
             this.Lote01TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Lote01TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lote01TextBox.Location = new System.Drawing.Point(3, 25);
+            this.Lote01TextBox.Location = new System.Drawing.Point(3, 26);
             this.Lote01TextBox.Name = "Lote01TextBox";
             this.Lote01TextBox.Size = new System.Drawing.Size(291, 26);
             this.Lote01TextBox.TabIndex = 0;
@@ -493,11 +474,37 @@ namespace AirSprings
             this.Lote01Label.AutoSize = true;
             this.Lote01Label.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Lote01Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lote01Label.Location = new System.Drawing.Point(3, 7);
+            this.Lote01Label.Location = new System.Drawing.Point(3, 8);
             this.Lote01Label.Name = "Lote01Label";
             this.Lote01Label.Size = new System.Drawing.Size(291, 15);
             this.Lote01Label.TabIndex = 2;
             this.Lote01Label.Text = "XXXX0000XXX00XXX0 XX";
+            // 
+            // OperatorGroupBox
+            // 
+            this.OperatorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OperatorGroupBox.Controls.Add(this.OperatorTextBox);
+            this.OperatorGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OperatorGroupBox.Location = new System.Drawing.Point(694, 489);
+            this.OperatorGroupBox.Name = "OperatorGroupBox";
+            this.OperatorGroupBox.Size = new System.Drawing.Size(306, 43);
+            this.OperatorGroupBox.TabIndex = 0;
+            this.OperatorGroupBox.TabStop = false;
+            this.OperatorGroupBox.Text = "Operador";
+            // 
+            // OperatorTextBox
+            // 
+            this.OperatorTextBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.OperatorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OperatorTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OperatorTextBox.Location = new System.Drawing.Point(3, 17);
+            this.OperatorTextBox.Margin = new System.Windows.Forms.Padding(10);
+            this.OperatorTextBox.Name = "OperatorTextBox";
+            this.OperatorTextBox.ReadOnly = true;
+            this.OperatorTextBox.Size = new System.Drawing.Size(300, 21);
+            this.OperatorTextBox.TabIndex = 0;
+            this.OperatorTextBox.Text = "FELIPE ANTONIO SANCHEZ";
+            this.OperatorTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DebugTextBox
             // 
@@ -509,139 +516,6 @@ namespace AirSprings
             this.DebugTextBox.Size = new System.Drawing.Size(996, 20);
             this.DebugTextBox.TabIndex = 3;
             this.DebugTextBox.Visible = false;
-            // 
-            // ListLayoutPanel
-            // 
-            this.ListLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListLayoutPanel.ColumnCount = 2;
-            this.ListLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.5F));
-            this.ListLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.5F));
-            this.ListLayoutPanel.Controls.Add(this.SpringsGroupBox, 0, 0);
-            this.ListLayoutPanel.Controls.Add(this.CameraLayoutPanel, 1, 0);
-            this.ListLayoutPanel.Location = new System.Drawing.Point(3, 198);
-            this.ListLayoutPanel.Name = "ListLayoutPanel";
-            this.ListLayoutPanel.RowCount = 1;
-            this.ListLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ListLayoutPanel.Size = new System.Drawing.Size(1000, 336);
-            this.ListLayoutPanel.TabIndex = 2;
-            // 
-            // SpringsGroupBox
-            // 
-            this.SpringsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SpringsGroupBox.Controls.Add(this.SpringsDataGrid);
-            this.SpringsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SpringsGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.SpringsGroupBox.Name = "SpringsGroupBox";
-            this.SpringsGroupBox.Padding = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.SpringsGroupBox.Size = new System.Drawing.Size(279, 330);
-            this.SpringsGroupBox.TabIndex = 0;
-            this.SpringsGroupBox.TabStop = false;
-            this.SpringsGroupBox.Text = "Spring List";
-            // 
-            // SpringsDataGrid
-            // 
-            this.SpringsDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SpringsDataGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SpringsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SpringsDataGrid.Location = new System.Drawing.Point(7, 20);
-            this.SpringsDataGrid.Name = "SpringsDataGrid";
-            this.SpringsDataGrid.Size = new System.Drawing.Size(265, 304);
-            this.SpringsDataGrid.TabIndex = 0;
-            // 
-            // CameraLayoutPanel
-            // 
-            this.CameraLayoutPanel.ColumnCount = 2;
-            this.CameraLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.CameraLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.CameraLayoutPanel.Controls.Add(this.TextCamera2, 1, 2);
-            this.CameraLayoutPanel.Controls.Add(this.TextCamera1, 0, 2);
-            this.CameraLayoutPanel.Controls.Add(this.TitleCamara2, 1, 0);
-            this.CameraLayoutPanel.Controls.Add(this.TitleCamara1, 0, 0);
-            this.CameraLayoutPanel.Controls.Add(this.Camera1PictureBox, 0, 1);
-            this.CameraLayoutPanel.Controls.Add(this.Camera2PictureBox, 1, 1);
-            this.CameraLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CameraLayoutPanel.Location = new System.Drawing.Point(288, 3);
-            this.CameraLayoutPanel.Name = "CameraLayoutPanel";
-            this.CameraLayoutPanel.RowCount = 3;
-            this.CameraLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.CameraLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 295F));
-            this.CameraLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.CameraLayoutPanel.Size = new System.Drawing.Size(709, 330);
-            this.CameraLayoutPanel.TabIndex = 1;
-            // 
-            // TextCamera2
-            // 
-            this.TextCamera2.AutoSize = true;
-            this.TextCamera2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextCamera2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextCamera2.Location = new System.Drawing.Point(357, 310);
-            this.TextCamera2.Name = "TextCamera2";
-            this.TextCamera2.Size = new System.Drawing.Size(349, 20);
-            this.TextCamera2.TabIndex = 7;
-            this.TextCamera2.Text = "...";
-            this.TextCamera2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TextCamera1
-            // 
-            this.TextCamera1.AutoSize = true;
-            this.TextCamera1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextCamera1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextCamera1.Location = new System.Drawing.Point(3, 310);
-            this.TextCamera1.Name = "TextCamera1";
-            this.TextCamera1.Size = new System.Drawing.Size(348, 20);
-            this.TextCamera1.TabIndex = 6;
-            this.TextCamera1.Text = "...";
-            this.TextCamera1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TitleCamara2
-            // 
-            this.TitleCamara2.AutoSize = true;
-            this.TitleCamara2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TitleCamara2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleCamara2.Location = new System.Drawing.Point(357, 0);
-            this.TitleCamara2.Name = "TitleCamara2";
-            this.TitleCamara2.Size = new System.Drawing.Size(349, 15);
-            this.TitleCamara2.TabIndex = 5;
-            this.TitleCamara2.Text = "CAMARA II";
-            this.TitleCamara2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TitleCamara1
-            // 
-            this.TitleCamara1.AutoSize = true;
-            this.TitleCamara1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TitleCamara1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleCamara1.Location = new System.Drawing.Point(3, 0);
-            this.TitleCamara1.Name = "TitleCamara1";
-            this.TitleCamara1.Size = new System.Drawing.Size(348, 15);
-            this.TitleCamara1.TabIndex = 4;
-            this.TitleCamara1.Text = "CAMARA I";
-            this.TitleCamara1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Camera1PictureBox
-            // 
-            this.Camera1PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Camera1PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Camera1PictureBox.Location = new System.Drawing.Point(3, 18);
-            this.Camera1PictureBox.Name = "Camera1PictureBox";
-            this.Camera1PictureBox.Size = new System.Drawing.Size(348, 289);
-            this.Camera1PictureBox.TabIndex = 1;
-            this.Camera1PictureBox.TabStop = false;
-            // 
-            // Camera2PictureBox
-            // 
-            this.Camera2PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Camera2PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Camera2PictureBox.Location = new System.Drawing.Point(357, 18);
-            this.Camera2PictureBox.Name = "Camera2PictureBox";
-            this.Camera2PictureBox.Size = new System.Drawing.Size(349, 289);
-            this.Camera2PictureBox.TabIndex = 2;
-            this.Camera2PictureBox.TabStop = false;
             // 
             // BottomLayoutPanel
             // 
@@ -772,7 +646,7 @@ namespace AirSprings
             // 
             // CameraTimer
             // 
-            this.CameraTimer.Interval = 20;
+            this.CameraTimer.Interval = 500;
             this.CameraTimer.Tick += new System.EventHandler(this.CameraTimer_Tick);
             // 
             // StatusBar
@@ -791,6 +665,51 @@ namespace AirSprings
             this.StatusBarLabel.Size = new System.Drawing.Size(16, 17);
             this.StatusBarLabel.Text = "...";
             // 
+            // TextD5
+            // 
+            this.TextD5.AutoSize = true;
+            this.TextD5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TextD5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(0)));
+            this.TextD5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.TextD5.Location = new System.Drawing.Point(477, 0);
+            this.TextD5.Name = "TextD5";
+            this.TextD5.Size = new System.Drawing.Size(107, 45);
+            this.TextD5.TabIndex = 3;
+            this.TextD5.Text = "Assembly Specification";
+            this.TextD5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // IndicadorsGroupBox
+            // 
+            this.IndicadorsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.IndicadorsGroupBox.Controls.Add(this.tableLayoutPanel1);
+            this.IndicadorsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IndicadorsGroupBox.Location = new System.Drawing.Point(700, 375);
+            this.IndicadorsGroupBox.Name = "IndicadorsGroupBox";
+            this.IndicadorsGroupBox.Size = new System.Drawing.Size(300, 83);
+            this.IndicadorsGroupBox.TabIndex = 5;
+            this.IndicadorsGroupBox.TabStop = false;
+            this.IndicadorsGroupBox.Text = "Indicadores";
+            this.IndicadorsGroupBox.UseWaitCursor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(294, 64);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // AirSprings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -804,6 +723,8 @@ namespace AirSprings
             this.SpringsTabControl.ResumeLayout(false);
             this.Packing.ResumeLayout(false);
             this.Packing.PerformLayout();
+            this.SpringsGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SpringsDataGrid)).EndInit();
             this.TopLayoutPanel.ResumeLayout(false);
             this.OrdersLayoutPanel.ResumeLayout(false);
             this.CartonGroupBox.ResumeLayout(false);
@@ -812,24 +733,18 @@ namespace AirSprings
             this.OrderGroupBox.PerformLayout();
             this.LayoutPanelData.ResumeLayout(false);
             this.LayoutPanelData.PerformLayout();
-            this.OperatorGroupBox.ResumeLayout(false);
-            this.OperatorGroupBox.PerformLayout();
             this.LoteGropuBox.ResumeLayout(false);
             this.ComponentsLayoutPanel.ResumeLayout(false);
             this.ComponentsLayoutPanel.PerformLayout();
-            this.ListLayoutPanel.ResumeLayout(false);
-            this.SpringsGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SpringsDataGrid)).EndInit();
-            this.CameraLayoutPanel.ResumeLayout(false);
-            this.CameraLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Camera1PictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Camera2PictureBox)).EndInit();
+            this.OperatorGroupBox.ResumeLayout(false);
+            this.OperatorGroupBox.PerformLayout();
             this.BottomLayoutPanel.ResumeLayout(false);
             this.BottomLayoutPanel.PerformLayout();
             this.DeclineGrupBox.ResumeLayout(false);
             this.DeclineGrupBox.PerformLayout();
             this.StatusBar.ResumeLayout(false);
             this.StatusBar.PerformLayout();
+            this.IndicadorsGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -853,7 +768,6 @@ namespace AirSprings
         private System.Windows.Forms.Label TextD4;
         private System.Windows.Forms.Label TextD2;
         private System.Windows.Forms.Label TextD3;
-        private System.Windows.Forms.Label TextD5;
         private System.Windows.Forms.Label TextD6;
         private System.Windows.Forms.Label AssamblyLabel;
         private System.Windows.Forms.Label LabelLabel;
@@ -874,20 +788,6 @@ namespace AirSprings
         private System.Windows.Forms.GroupBox OperatorGroupBox;
         private System.Windows.Forms.TextBox OperatorTextBox;
 
-        //AREA DE LISTA DATAGRID
-        private System.Windows.Forms.TableLayoutPanel ListLayoutPanel;
-        private System.Windows.Forms.GroupBox SpringsGroupBox;
-        private System.Windows.Forms.DataGridView SpringsDataGrid;
-
-        //AREA DE CAMARAS
-        private System.Windows.Forms.TableLayoutPanel CameraLayoutPanel;
-        private System.Windows.Forms.PictureBox Camera1PictureBox;
-        private System.Windows.Forms.PictureBox Camera2PictureBox;
-        private System.Windows.Forms.Label TextCamera2;
-        private System.Windows.Forms.Label TextCamera1;
-        private System.Windows.Forms.Label TitleCamara2;
-        private System.Windows.Forms.Label TitleCamara1;
-
         private System.Windows.Forms.TextBox DebugTextBox;
     
         //AREA DE BOTONES BOTTOM
@@ -904,7 +804,12 @@ namespace AirSprings
         private System.Windows.Forms.Timer CameraTimer;
         private System.Windows.Forms.StatusStrip StatusBar;
         private System.Windows.Forms.ToolStripStatusLabel StatusBarLabel;
-
+        private System.Windows.Forms.GroupBox SpringsGroupBox;
+        private System.Windows.Forms.DataGridView SpringsDataGrid;
+        private System.Windows.Forms.Label TextD5;
+        private System.Windows.Forms.GroupBox IndicadorsGroupBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 
