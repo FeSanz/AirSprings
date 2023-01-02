@@ -13,7 +13,10 @@ using System.Windows.Forms;
 using System.Threading;
 using Keyence.IV2.Sdk;
 using S7.Net;
+using Zebra.Sdk.Comm;
+using Zebra.Sdk.Printer;
 using Timer = System.Windows.Forms.Timer;
+using System.IO;
 
 namespace AirSprings
 {
@@ -82,6 +85,11 @@ namespace AirSprings
             {
                 MessageBox.Show("No se establecio conexión al PLC");
             }
+
+            ZPLPrinterTCP("IP");
+            //CPCLPrinterTCP("IP");
+            //DNSPrinter("PrintName");
+            //GraphicsUtilPrinter("IP");
 
             timerRead.Interval = 1000;
             timerRead.Tick += new EventHandler(ReadPLC);
@@ -290,6 +298,107 @@ namespace AirSprings
             {
                 pieza = false;
                 DebugTextBox.Text = marcas[0].ToString();
+            }
+        }
+
+
+        private void ZPLPrinterTCP(string IpAddress)
+        {
+            // Instanciar la conexión para el puerto ZPL TCP
+            Connection PrinterConn = new TcpConnection(IpAddress, TcpConnection.DEFAULT_ZPL_TCP_PORT);
+
+            try
+            {
+                PrinterConn.Open();
+                string zplData = "^XA^FO20,20^A0N,25,25^FDThis is a ZPL test.^FS^XZ";
+                PrinterConn.Write(Encoding.UTF8.GetBytes(zplData));
+            }
+            catch (ConnectionException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                PrinterConn.Close();
+            }
+        }
+
+        private void CPCLPrinterTCP(string IpAddress)
+        {
+            // Instanciar la conexión para el puerto TCP CPCL
+            Connection PrinterConn = new TcpConnection(IpAddress, TcpConnection.DEFAULT_CPCL_TCP_PORT);
+
+            try
+            {
+                PrinterConn.Open();
+
+                string cpclData = "! 0 200 200 210 1\r\n"
+                + "TEXT 4 0 30 40 This is a CPCL test.\r\n"
+                + "FORM\r\n"
+                + "PRINT\r\n";
+
+                PrinterConn.Write(Encoding.UTF8.GetBytes(cpclData));
+            }
+            catch (ConnectionException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                PrinterConn.Close();
+            }
+        }
+
+        private void DNSPrinter(string dnsName)
+        {
+            Connection connection = new TcpConnection(dnsName, 9100);
+            try
+            {
+                connection.Open();
+                ZebraPrinter p = ZebraPrinterFactory.GetInstance(connection);
+                p.PrintConfigurationLabel();
+            }
+            catch (ConnectionException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            catch (ZebraPrinterLanguageUnknownException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        private void GraphicsUtilPrinter(string IpAddress)
+        {
+            Connection connection = new TcpConnection(IpAddress, TcpConnection.DEFAULT_ZPL_TCP_PORT);
+            try
+            {
+                connection.Open();
+                ZebraPrinter printer = ZebraPrinterFactory.GetInstance(connection);
+
+                int x = 0;
+                int y = 0;
+                printer.PrintImage("/path/to/my/image/sample.jpg", x, y);
+            }
+            catch (ConnectionException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            catch (ZebraPrinterLanguageUnknownException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }
